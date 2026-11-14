@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-// 1. Classe Abstraite (Le concept général)
 abstract class Element {
     private String id;
     private String titre;
@@ -13,16 +12,14 @@ abstract class Element {
 
     public String getTitre() { return titre; }
     
-    // Méthode abstraite : chaque enfant devra l'implémenter
     public abstract void afficherDetails();
 }
 
-// 2. Héritage : Un Livre est un Element
 class Livre extends Element {
     private String auteur;
 
     public Livre(String id, String titre, String auteur) {
-        super(id, titre); // Appel du constructeur parent
+        super(id, titre); 
         this.auteur = auteur;
     }
 
@@ -32,7 +29,6 @@ class Livre extends Element {
     }
 }
 
-// 3. Héritage : Un Magazine est aussi un Element
 class Magazine extends Element {
     private int numero;
 
@@ -47,9 +43,7 @@ class Magazine extends Element {
     }
 }
 
-// 4. Classe Principale (Le programme)
 public class LibrarySystem {
-    // On utilise une ArrayList (comme dans ton cours de Java)
     private static ArrayList<Element> bibliotheque = new ArrayList<>();
 
     public static void main(String[] args) {
@@ -67,7 +61,7 @@ public class LibrarySystem {
             System.out.print("Votre choix : ");
 
             int choix = scanner.nextInt();
-            scanner.nextLine(); // Consommer le retour à la ligne
+            scanner.nextLine(); 
 
             switch (choix) {
                 case 1:
@@ -92,7 +86,6 @@ public class LibrarySystem {
                         System.out.println("La bibliothèque est vide.");
                     } else {
                         for (Element e : bibliotheque) {
-                            // Polymorphisme : la bonne méthode afficherDetails() est appelée
                             e.afficherDetails();
                         }
                     }
